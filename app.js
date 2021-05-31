@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV !== "production") {
+    require('dotenv').config();
+}
+
 const express = require('express');
 const path = require('path');
 const ExpressError = require('./utils/ExpressError');
@@ -29,6 +33,11 @@ db.on("error", console.error.bind(console, "connection error"));
 db.once("open", () => {
     console.log("Database connected");
 });
+
+// console.log(process.env.CLOUDINARY_CLOUD_NAME);
+// console.log(process.env.CLOUDINARY_KEY);
+// console.log(process.env.CLOUDINARY_SECRET);
+
 
 const app = express();
 // using ejs as view engine
